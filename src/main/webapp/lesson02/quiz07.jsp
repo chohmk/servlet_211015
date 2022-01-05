@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>POST Method(폼 태그) - 계산기</title>
+<title>메뉴 검색</title>
 <!-- bootstrap -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -24,19 +25,16 @@
 </head>
 <body>
 	<div class="container">
-		<h1>사칙 연산 계산기</h1>
-		<form method="post" action="/lesson02/quiz04_1.jsp">
+		<h1>메뉴 검색</h1>
+		<form method="post" action="/lesson02/quiz07_1.jsp">
 			<div class="d-flex">
-				<input type="text" name="number1" class="form-control col-2">
-				<select name="operator" class="ml-2 form-control col-1">
-					<option value="plus">+</option>
-					<option value="minus">-</option>
-					<option value="multiple">*</option>
-					<option value="divide">/</option>
-				</select> <input type="text" name="number2" class="ml-2 form-control col-2">
-
-				<input type="submit" class="ml-2 btn btn-success" value="계산하기">
+				<input type="text" name="menu" class="form-control col-5">
+				<label><input type="checkbox" class="ml-2 mt-3">4점 이하 제외</label>
 			</div>
+			<button type="submit" class="btn btn-success mt-3">검색</button>
 		</form>
+	
 	</div>
+
 </body>
+</html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>POST Method(폼 태그) - 계산기</title>
+<title>계산기</title>
 <!-- bootstrap -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -23,20 +23,41 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="container">
-		<h1>사칙 연산 계산기</h1>
-		<form method="post" action="/lesson02/quiz04_1.jsp">
-			<div class="d-flex">
-				<input type="text" name="number1" class="form-control col-2">
-				<select name="operator" class="ml-2 form-control col-1">
-					<option value="plus">+</option>
-					<option value="minus">-</option>
-					<option value="multiple">*</option>
-					<option value="divide">/</option>
-				</select> <input type="text" name="number2" class="ml-2 form-control col-2">
+	<%
+	int number1 = Integer.parseInt(request.getParameter("number1"));
+	int number2 = Integer.parseInt(request.getParameter("number2"));
+	String operator = request.getParameter("operator");
+	double result = 0;
+	String printOperator = null;
 
-				<input type="submit" class="ml-2 btn btn-success" value="계산하기">
-			</div>
-		</form>
+	switch (operator) {
+	case "plus":
+		result = number1 + number2;
+		printOperator = "+";
+		break;
+	case "minus":
+		result = number1 - number2;
+		printOperator = "-";
+		break;
+	case "multiple":
+		result = number1 * number2;
+		printOperator = "X";
+		break;
+	case "divide":
+		result = number1 / (double) number2;
+		printOperator = "/";
+	}
+	%>
+
+	<div class="container">
+		<h1>계산 결과</h1>
+		<div class="display-3">
+			<%
+			out.print(number1 + " " + printOperator + " " + number2 + " = ");
+			%>
+			<span class="text-primary"> <%=result%>
+			</span>
+		</div>
 	</div>
 </body>
+</html>
