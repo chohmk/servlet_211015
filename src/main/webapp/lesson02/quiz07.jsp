@@ -24,12 +24,13 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+
 	<div class="container">
 		<h1>메뉴 검색</h1>
 		<form method="post" action="/lesson02/quiz07_1.jsp">
 			<div class="d-flex">
-				<input type="text" name="menu" class="form-control col-5">
-				<label><input type="checkbox" class="ml-2 mt-3">4점 이하 제외</label>
+				<input type="text" name="keyword" class="form-control col-5">
+				<label><input type="checkbox" class="ml-2 mt-3" name="starPointFilter" value="true">4점 이하 제외</label>
 			</div>
 			<button type="submit" class="btn btn-success mt-3">검색</button>
 		</form>

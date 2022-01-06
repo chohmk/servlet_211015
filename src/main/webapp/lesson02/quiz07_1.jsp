@@ -92,7 +92,45 @@
 	%>
 	<div class="container">
 		<h1 class="text-center">검색 결과</h1>
-		<table class="table text-center"></table>
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>메뉴</th>
+					<th>상호</th>
+					<th>별점</th>
+				</tr>
+				
+				
+			</thead>
+			<tbody>
+				<%
+					String keyword = request.getParameter("keyword");
+					String starPointFilter = request.getParameter("starPointFilter");
+					
+					// 체크 안함: null, 체크 함: "true"
+					boolean exclude = starPointFilter != null; // 체크됨(4점 이하 제외)
+					
+					for (Map<String, Object> item : list) {
+						if (keyword.equals(item.get("menu"))) {
+							
+						 	if (exclude && (double)item.get("point") <= 4.0) {	// skip 조건: 체크됨 && 4점 이하
+								continue;
+							} 
+					
+				%>
+						<tr>
+							<td><%= item.get("menu") %></td>
+							<td><%= item.get("name") %></td>
+							<td><%= item.get("point") %></td>
+						</tr>
+				<%
+						}
+					}
+						
+				%>
+			
+			</tbody>
+		</table>
 	</div>
 
 </body>
